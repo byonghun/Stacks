@@ -19,10 +19,11 @@
 
   #ifdef DEBUG
     jsCodeLocation = [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"index" fallbackResource:nil];
+    [ReactNativeNavigation bootstrap:jsCodeLocation launchOptions:launchOptions];
   #else
     jsCodeLocation = [[NSBundle mainBundle] URLForResource:@"main" withExtension:@"jsbundle"];
+    [ReactNativeNavigation bootstrap:jsCodeLocation launchOptions:launchOptions];
   #endif
-  [ReactNativeNavigation bootstrap:jsCodeLocation launchOptions:launchOptions];
 
   RCTRootView *rootView = [[RCTRootView alloc] initWithBundleURL:jsCodeLocation
                                                       moduleName:@"stacks"
