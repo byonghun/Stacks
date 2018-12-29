@@ -7,7 +7,7 @@
  */
 
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View} from 'react-native';
+import MainStack from './src/components/main';
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
@@ -18,14 +18,30 @@ const instructions = Platform.select({
 
 type Props = {};
 export default class App extends Component<Props> {
+  state = {start: true}
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}>Welcome to React Native!</Text>
-        <Text style={styles.instructions}>To get started, edit App.js</Text>
-        <Text style={styles.instructions}>{instructions}</Text>
+        {this.state.start
+          ? <Start changeViews={this.changeViews} />
+          : <MainStack changeViews={this.changeViews} />}
       </View>
     );
+  }
+
+  changeViews = () => this.setState({start: !this.state.start})
+}
+
+class Start extends Component {
+  render() {
+    return (
+      <View>
+        <Text style={styles.welcome}>Welcome to Stacks!</Text>
+        <TouchableOpacity onPress={this.props.changeViews}>
+          <Text style={styles.instructions}>Click to get started!</Text>
+        </TouchableOpacity>
+      </View>
+    )
   }
 }
 
