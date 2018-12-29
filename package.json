@@ -12,7 +12,11 @@
     "react-native-navigation": "^2.4.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.2.2",
+    "@babel/preset-env": "^7.2.3",
     "babel-jest": "23.6.0",
+    "babel-loader": "^8.0.4",
+    "babel-plugin-auto-import": "^0.7.1",
     "jest": "23.6.0",
     "metro-react-native-babel-preset": "0.51.1",
     "react-test-renderer": "16.6.3"
